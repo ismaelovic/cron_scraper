@@ -2,8 +2,8 @@ name: Website Monitor
 
 on:
   schedule:
-    # Runs every 10 minutes (UTC)
-    - cron: '*/10 * * * *'
+    # Runs every hour
+    - cron: '0 * * * *'
   workflow_dispatch: # Allows you to run it manually for testing
 
 jobs:
