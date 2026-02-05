@@ -1,0 +1,35 @@
+name: Website Monitor
+
+on:
+  schedule:
+    # Runs every 10 minutes (UTC)
+    - cron: '*/10 * * * *'
+  workflow_dispatch: # Allows you to run it manually for testing
+
+jobs:
+  check-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: '3.14'
+          enable-cache: true
+
+      - name: Install dependencies
+        run: |
+          uv sync
+          uv run playwright install --with-deps chromium
+
+      - name: Check Apartment
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_APARTMENT }}
+        run: uv run monitor_apartment.py
+
+      - name: Check Sneakers
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_SNEAKERS }}
+        run: uv run monitor_sneakers.py
