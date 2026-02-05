@@ -7,7 +7,8 @@ load_dotenv()
 
 # Config
 TARGET_URL = "https://www.sportsworld.dk/adidas-ultraboost-10-shoes-womens-210232#colcode=21023240"
-TARGET_SIZE = "8 (42)"
+# TARGET_SIZE = "8 (42)"
+TARGET_SIZE = "6.5 (40)"
 NTFY_TOPIC = os.getenv("NTFY_TOPIC")
 
 def check_stock():
