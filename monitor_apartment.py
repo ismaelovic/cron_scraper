@@ -80,4 +80,5 @@ if __name__ == "__main__":
 
     # Optional test trigger for verifying notifications
     if os.getenv("TEST_NOTIFY") == "true":
+        print("Sending test alert to verify notification pipeline...")
         send_alert("🏠 TEST ALERT: Apartment monitor pipeline is live!")

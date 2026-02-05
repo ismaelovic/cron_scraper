@@ -27,7 +27,6 @@ jobs:
       - name: Check Apartment
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_APARTMENT }}
-          TEST_NOTIFY: true
         run: uv run monitor_apartment.py
 
       - name: Check Sneakers
