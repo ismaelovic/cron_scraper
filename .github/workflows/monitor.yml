@@ -6,6 +6,9 @@ on:
     - cron: '0 * * * *'
   workflow_dispatch: # Allows you to run it manually for testing
 
+permissions:
+  contents: write
+
 jobs:
   check-site:
     runs-on: ubuntu-latest
@@ -27,9 +30,12 @@ jobs:
       - name: Check Apartment
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_APARTMENT }}
-        run: uv run monitor_apartment.py
+        run: uv run python monitor_apartment.py
 
-      - name: Check Sneakers
-        env:
-          NTFY_TOPIC: ${{ secrets.NTFY_SNEAKERS }}
-        run: uv run monitor_sneakers.py
+      - name: Save state
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add state.json
+          git diff --staged --quiet || git commit -m "chore: update monitor state"
+          git push
