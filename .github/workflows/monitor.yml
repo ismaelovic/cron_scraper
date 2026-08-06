@@ -2,8 +2,8 @@ name: Website Monitor
 
 on:
   schedule:
-    # Runs every hour
-    - cron: '0 * * * *'
+    # Runs every 15 minutes
+    - cron: '*/15 * * * *'
   workflow_dispatch: # Allows you to run it manually for testing
 
 permissions:
@@ -31,6 +31,11 @@ jobs:
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_APARTMENT }}
         run: uv run python monitor_apartment.py
+
+      - name: Check Bus
+        env:
+          NTFY_TOPIC_BUS: ${{ secrets.NTFY_BUS }}
+        run: uv run python monitor_bus.py
 
       - name: Save state
         run: |
