@@ -1,23 +1,23 @@
 {
   "arendal": {
-    "is_closed": true
+    "is_closed": false
   },
   "vibehusene": {
-    "is_closed": true
+    "is_closed": false
   },
   "frederiksberg-boligfond": {
-    "is_closed": true
+    "is_closed": false
   },
   "solgaarden": {
-    "is_closed": true
+    "is_closed": false
   },
   "fuglevaenget": {
-    "is_closed": true
+    "is_closed": false
   },
   "hvidkildegaard": {
-    "is_closed": true
+    "is_closed": false
   },
   "oestergaarden": {
-    "is_closed": true
+    "is_closed": false
   }
 }
